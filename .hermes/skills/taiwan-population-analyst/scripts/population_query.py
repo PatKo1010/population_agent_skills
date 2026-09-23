@@ -10,9 +10,9 @@ OPERATIONS = {'population_lookup', 'population_rank', 'population_trend', 'popul
 COMMON = {'operation', 'sex', 'region_level', 'age', 'age_min', 'age_max', 'include_100_plus'}
 FIELDS = {
     'population_lookup': COMMON | {'month', 'region'},
-    'population_rank': COMMON | {'month', 'limit'},
+    'population_rank': COMMON | {'month', 'limit', 'order', 'include_ties'},
     'population_trend': COMMON | {'months', 'region'},
-    'population_share': COMMON | {'month', 'limit'},
+    'population_share': COMMON | {'month', 'limit', 'region', 'denominator_sex'},
 }
 
 
@@ -43,7 +43,7 @@ def validate_intent(intent):
         reject('OPERATION_NOT_ALLOWED', op, status='out_of_scope', allowed=sorted(OPERATIONS))
     unknown = sorted(set(intent) - FIELDS[op])
     if unknown:
-        reject('UNKNOWN_FIELDS', unknown)
+        reject('UNKNOWN_FIELDS', unknown, operation=op, allowed_fields=sorted(FIELDS[op]))
     required = {'sex', 'region_level', 'months' if op == 'population_trend' else 'month'}
     if op in {'population_lookup', 'population_trend'}:
         required.add('region')
@@ -52,6 +52,16 @@ def validate_intent(intent):
         reject('MISSING_REQUIRED_FIELDS', missing, status='needs_clarification')
     if intent['sex'] not in ('male', 'female', 'total'):
         reject('INVALID_SEX', intent['sex'])
+    if 'denominator_sex' in intent:
+        denominator_sex = intent['denominator_sex']
+        if denominator_sex not in ('male', 'female', 'total'):
+            reject('INVALID_DENOMINATOR_SEX', denominator_sex)
+        if denominator_sex not in (intent['sex'], 'total'):
+            reject('INCOMPATIBLE_DENOMINATOR_SEX', denominator_sex)
+    if 'order' in intent and intent['order'] not in ('asc', 'desc'):
+        reject('INVALID_ORDER', intent['order'])
+    if 'include_ties' in intent and type(intent['include_ties']) is not bool:
+        reject('INVALID_INCLUDE_TIES', intent['include_ties'])
     level = intent['region_level']
     if isinstance(level, list):
         reject('MIXED_GEOGRAPHIC_LEVELS', level)
@@ -123,7 +133,7 @@ def execute_query(con, intent, months):
     if 'region' in intent:
         conditions.append('region_name=?')
         params.append(intent['region'])
-    if intent['sex'] != 'total':
+    if intent['sex'] != 'total' and intent['operation'] != 'population_share':
         conditions.append('sex=?')
         params.append(intent['sex'])
     if 'age' in intent:
@@ -137,11 +147,17 @@ def execute_query(con, intent, months):
         age_sql, age_params = "age_label='all'", []
     base = 'WITH scoped AS (SELECT * FROM population WHERE ' + ' AND '.join(conditions) + ') '
     if intent['operation'] == 'population_share':
+        numerator_sex = intent['sex']
+        denominator_sex = intent.get('denominator_sex', numerator_sex)
+        numerator_filter = '1=1' if numerator_sex == 'total' else 'sex=?'
+        denominator_filter = '1=1' if denominator_sex == 'total' else 'sex=?'
+        share_params = age_params + ([] if numerator_sex == 'total' else [numerator_sex])
+        share_params += [] if denominator_sex == 'total' else [denominator_sex]
         sql = base + '''SELECT year_month,region_name,
-            SUM(CASE WHEN ''' + age_sql + ''' THEN population END) numerator,
-            SUM(CASE WHEN age_label='all' THEN population END) denominator
+            SUM(CASE WHEN (''' + age_sql + ') AND ' + numerator_filter + ''' THEN population END) numerator,
+            SUM(CASE WHEN age_label='all' AND ''' + denominator_filter + ''' THEN population END) denominator
             FROM scoped GROUP BY year_month,region_name'''
-        rows = [dict(row) for row in con.execute(sql, params + age_params)]
+        rows = [dict(row) for row in con.execute(sql, params + share_params)]
         for row in rows:
             numerator, denominator = row['numerator'], row['denominator']
             if numerator is None or denominator is None:
@@ -155,8 +171,14 @@ def execute_query(con, intent, months):
         return rows[:intent.get('limit', 10)]
     sql = base + 'SELECT year_month,region_name,SUM(population) population FROM scoped WHERE ' + age_sql + ' GROUP BY year_month,region_name'
     if intent['operation'] == 'population_rank':
-        sql += ' ORDER BY population DESC,region_name LIMIT ?'
-        age_params.append(intent.get('limit', 10))
+        # Direction is chosen from constants after strict validation, never raw SQL input.
+        sql += ' ORDER BY population ' + ('ASC' if intent.get('order', 'desc') == 'asc' else 'DESC') + ',region_name'
+        rows = [dict(row) for row in con.execute(sql, params + age_params)]
+        limit = intent.get('limit', 10)
+        if intent.get('include_ties', False) and len(rows) > limit:
+            boundary = rows[limit - 1]['population']
+            return rows[:limit] + [row for row in rows[limit:] if row['population'] == boundary]
+        return rows[:limit]
     else:
         sql += ' ORDER BY year_month,region_name'
     return [dict(row) for row in con.execute(sql, params + age_params)]

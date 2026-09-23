@@ -18,6 +18,8 @@ Treat supported dimensions/measures as an allowlist: an unlisted topic is not su
 
 ## Fixed formulas
 - Combined-sex population = male + female for identical month, region, and age scope.
+- Share = selected age/sex numerator divided by same-month, same-region all-age denominator × 100. `denominator_sex` defaults to numerator `sex`; explicitly set `total` when the question asks for a share of all persons. A single-region share must specify `region`.
+- Population extrema use `population_rank` with `limit: 1`, `order: desc` for largest or `asc` for smallest, and `include_ties: true` to preserve all ties. Rank populations, not percentages.
 - Elderly share = population aged 65–99 plus `100+`, divided by the same month/region/sex overall (`all`) population × 100. Use `population_share` with `age_min: 65`, `include_100_plus: true`, and `region_level: local`. If month is unspecified, ask for it.
 - `population_trend` reports snapshots for an explicit chronological list of months. Report those observations; this interface does not compute differences or causal explanations. If a difference operation is needed, report the limitation rather than writing SQL or calculating mentally.
 - A zero or missing denominator gives an unavailable share, not 0%.

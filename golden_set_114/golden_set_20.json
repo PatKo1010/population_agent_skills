@@ -1,0 +1,2291 @@
+{
+  "metadata": {
+    "source": "/Users/patrick/Downloads/縣市人口數按性別及年齡-114年.xls",
+    "sha256": "3df152dcfecf9ddff615fc8360cfe668691029a155e15de0a0d67c92313adaa9",
+    "method": "Independent direct XLS extraction with xlrd; no skill pipeline code, derived dataset, or query outputs used.",
+    "year": 2025,
+    "roc_year": 114,
+    "question_count": 20,
+    "source_reconciliation_assertions": 57272,
+    "warnings": [
+      "12月最後一個數值欄無標籤；不將該欄解讀為100歲以上，不產生12月65歲以上等依賴該欄的答案。",
+      "月末人口存量不是出生數或全年累計人數；跨月差額不是出生或死亡人數。"
+    ],
+    "grading": "Counts and signed changes: exact integers. Percentages: compare numeric expected with absolute tolerance 0.005 percentage points; displayed values use decimal ROUND_HALF_UP to 2 places. Ranking: compare unordered complete tie set of region/population pairs."
+  },
+  "questions": [
+    {
+      "id": "G001",
+      "category": "全國月末總人口",
+      "question": "民國114年1月底，全國不分性別、全年齡人口共有多少人？",
+      "answer": "23,396,049 人",
+      "expected": 23396049,
+      "unit": "人",
+      "operation": "identity",
+      "absolute_tolerance": 0,
+      "operands": [
+        {
+          "month": "2025-01",
+          "region": "總計",
+          "sex": "計",
+          "age_scope": "全年齡（原表總計欄）",
+          "sheet": "01",
+          "cells": [
+            {
+              "cell": "C5",
+              "value": 23396049
+            }
+          ],
+          "value": 23396049
+        }
+      ],
+      "original_id": "G001"
+    },
+    {
+      "id": "G002",
+      "category": "全國月末總人口",
+      "question": "民國114年6月底，全國不分性別、全年齡人口共有多少人？",
+      "answer": "23,346,741 人",
+      "expected": 23346741,
+      "unit": "人",
+      "operation": "identity",
+      "absolute_tolerance": 0,
+      "operands": [
+        {
+          "month": "2025-06",
+          "region": "總計",
+          "sex": "計",
+          "age_scope": "全年齡（原表總計欄）",
+          "sheet": "06",
+          "cells": [
+            {
+              "cell": "C5",
+              "value": 23346741
+            }
+          ],
+          "value": 23346741
+        }
+      ],
+      "original_id": "G006"
+    },
+    {
+      "id": "G003",
+      "category": "全國月末總人口",
+      "question": "民國114年12月底，全國不分性別、全年齡人口共有多少人？",
+      "answer": "23,299,132 人",
+      "expected": 23299132,
+      "unit": "人",
+      "operation": "identity",
+      "absolute_tolerance": 0,
+      "operands": [
+        {
+          "month": "2025-12",
+          "region": "總計",
+          "sex": "計",
+          "age_scope": "全年齡（原表總計欄）",
+          "sheet": "12",
+          "cells": [
+            {
+              "cell": "C4",
+              "value": 23299132
+            }
+          ],
+          "value": 23299132
+        }
+      ],
+      "original_id": "G012"
+    },
+    {
+      "id": "G004",
+      "category": "縣市與性別",
+      "question": "民國114年1月底，臺北市男性的全年齡人口是多少人？",
+      "answer": "1,173,374 人",
+      "expected": 1173374,
+      "unit": "人",
+      "operation": "identity",
+      "absolute_tolerance": 0,
+      "operands": [
+        {
+          "month": "2025-01",
+          "region": "臺北市",
+          "sex": "男",
+          "age_scope": "全年齡（原表總計欄）",
+          "sheet": "01",
+          "cells": [
+            {
+              "cell": "C12",
+              "value": 1173374
+            }
+          ],
+          "value": 1173374
+        }
+      ],
+      "original_id": "G013"
+    },
+    {
+      "id": "G005",
+      "category": "縣市與性別",
+      "question": "民國114年12月底，新北市女性的全年齡人口是多少人？",
+      "answer": "2,083,212 人",
+      "expected": 2083212,
+      "unit": "人",
+      "operation": "identity",
+      "absolute_tolerance": 0,
+      "operands": [
+        {
+          "month": "2025-12",
+          "region": "新北市",
+          "sex": "女",
+          "age_scope": "全年齡（原表總計欄）",
+          "sheet": "12",
+          "cells": [
+            {
+              "cell": "C9",
+              "value": 2083212
+            }
+          ],
+          "value": 2083212
+        }
+      ],
+      "original_id": "G014"
+    },
+    {
+      "id": "G006",
+      "category": "縣市與性別",
+      "question": "民國114年12月底，新竹縣不分性別的全年齡人口是多少人？",
+      "answer": "597,235 人",
+      "expected": 597235,
+      "unit": "人",
+      "operation": "identity",
+      "absolute_tolerance": 0,
+      "operands": [
+        {
+          "month": "2025-12",
+          "region": "新竹縣",
+          "sex": "計",
+          "age_scope": "全年齡（原表總計欄）",
+          "sheet": "12",
+          "cells": [
+            {
+              "cell": "C31",
+              "value": 597235
+            }
+          ],
+          "value": 597235
+        }
+      ],
+      "original_id": "G019"
+    },
+    {
+      "id": "G007",
+      "category": "縣市與性別",
+      "question": "民國114年12月底，新竹市不分性別的全年齡人口是多少人？",
+      "answer": "455,740 人",
+      "expected": 455740,
+      "unit": "人",
+      "operation": "identity",
+      "absolute_tolerance": 0,
+      "operands": [
+        {
+          "month": "2025-12",
+          "region": "新竹市",
+          "sex": "計",
+          "age_scope": "全年齡（原表總計欄）",
+          "sheet": "12",
+          "cells": [
+            {
+              "cell": "C64",
+              "value": 455740
+            }
+          ],
+          "value": 455740
+        }
+      ],
+      "original_id": "G020"
+    },
+    {
+      "id": "G008",
+      "category": "年齡條件",
+      "question": "民國114年1月底，全國不分性別0至0歲（含端點）人口是多少人？",
+      "answer": "130,123 人",
+      "expected": 130123,
+      "unit": "人",
+      "operation": "identity",
+      "absolute_tolerance": 0,
+      "operands": [
+        {
+          "month": "2025-01",
+          "region": "總計",
+          "sex": "計",
+          "age_scope": "0–0歲（含端點）",
+          "sheet": "01",
+          "cells": [
+            {
+              "cell": "E5",
+              "value": 130123
+            }
+          ],
+          "value": 130123
+        }
+      ],
+      "original_id": "G021"
+    },
+    {
+      "id": "G009",
+      "category": "年齡條件",
+      "question": "民國114年11月底，全國不分性別65歲以上（含100歲以上）人口是多少人？",
+      "answer": "4,657,796 人",
+      "expected": 4657796,
+      "unit": "人",
+      "operation": "identity",
+      "absolute_tolerance": 0,
+      "operands": [
+        {
+          "month": "2025-11",
+          "region": "總計",
+          "sex": "計",
+          "age_scope": "65歲以上（含100+）",
+          "sheet": "11",
+          "cells": [
+            {
+              "cell": "CE5",
+              "value": 338174
+            },
+            {
+              "cell": "CF5",
+              "value": 334312
+            },
+            {
+              "cell": "CG5",
+              "value": 317176
+            },
+            {
+              "cell": "CH5",
+              "value": 300521
+            },
+            {
+              "cell": "CI5",
+              "value": 308304
+            },
+            {
+              "cell": "CK5",
+              "value": 299184
+            },
+            {
+              "cell": "CL5",
+              "value": 275805
+            },
+            {
+              "cell": "CM5",
+              "value": 262026
+            },
+            {
+              "cell": "CN5",
+              "value": 253688
+            },
+            {
+              "cell": "CO5",
+              "value": 249321
+            },
+            {
+              "cell": "CQ5",
+              "value": 203480
+            },
+            {
+              "cell": "CR5",
+              "value": 187177
+            },
+            {
+              "cell": "CS5",
+              "value": 158273
+            },
+            {
+              "cell": "CT5",
+              "value": 133435
+            },
+            {
+              "cell": "CU5",
+              "value": 105860
+            },
+            {
+              "cell": "CW5",
+              "value": 90644
+            },
+            {
+              "cell": "CX5",
+              "value": 102999
+            },
+            {
+              "cell": "CY5",
+              "value": 98292
+            },
+            {
+              "cell": "CZ5",
+              "value": 91430
+            },
+            {
+              "cell": "DA5",
+              "value": 85779
+            },
+            {
+              "cell": "DC5",
+              "value": 79065
+            },
+            {
+              "cell": "DD5",
+              "value": 68153
+            },
+            {
+              "cell": "DE5",
+              "value": 57803
+            },
+            {
+              "cell": "DF5",
+              "value": 50179
+            },
+            {
+              "cell": "DG5",
+              "value": 42058
+            },
+            {
+              "cell": "DI5",
+              "value": 36108
+            },
+            {
+              "cell": "DJ5",
+              "value": 29118
+            },
+            {
+              "cell": "DK5",
+              "value": 23632
+            },
+            {
+              "cell": "DL5",
+              "value": 19299
+            },
+            {
+              "cell": "DM5",
+              "value": 15671
+            },
+            {
+              "cell": "DO5",
+              "value": 12235
+            },
+            {
+              "cell": "DP5",
+              "value": 8870
+            },
+            {
+              "cell": "DQ5",
+              "value": 6454
+            },
+            {
+              "cell": "DR5",
+              "value": 4652
+            },
+            {
+              "cell": "DS5",
+              "value": 3165
+            },
+            {
+              "cell": "DT5",
+              "value": 5454
+            }
+          ],
+          "value": 4657796
+        }
+      ],
+      "original_id": "G024"
+    },
+    {
+      "id": "G010",
+      "category": "年齡條件",
+      "question": "民國114年11月底，全國不分性別100歲以上人口是多少人？",
+      "answer": "5,454 人",
+      "expected": 5454,
+      "unit": "人",
+      "operation": "identity",
+      "absolute_tolerance": 0,
+      "operands": [
+        {
+          "month": "2025-11",
+          "region": "總計",
+          "sex": "計",
+          "age_scope": "100歲以上（含100+）",
+          "sheet": "11",
+          "cells": [
+            {
+              "cell": "DT5",
+              "value": 5454
+            }
+          ],
+          "value": 5454
+        }
+      ],
+      "original_id": "G025"
+    },
+    {
+      "id": "G011",
+      "category": "年齡條件",
+      "question": "民國114年12月底，連江縣女性65至99歲（含端點）人口是多少人？",
+      "answer": "1,034 人",
+      "expected": 1034,
+      "unit": "人",
+      "operation": "identity",
+      "absolute_tolerance": 0,
+      "operands": [
+        {
+          "month": "2025-12",
+          "region": "連江縣",
+          "sex": "女",
+          "age_scope": "65–99歲（含端點）",
+          "sheet": "12",
+          "cells": [
+            {
+              "cell": "BR78",
+              "value": 59
+            },
+            {
+              "cell": "BS78",
+              "value": 86
+            },
+            {
+              "cell": "BT78",
+              "value": 85
+            },
+            {
+              "cell": "BU78",
+              "value": 78
+            },
+            {
+              "cell": "BV78",
+              "value": 77
+            },
+            {
+              "cell": "BW78",
+              "value": 69
+            },
+            {
+              "cell": "BX78",
+              "value": 59
+            },
+            {
+              "cell": "BY78",
+              "value": 49
+            },
+            {
+              "cell": "BZ78",
+              "value": 54
+            },
+            {
+              "cell": "CA78",
+              "value": 41
+            },
+            {
+              "cell": "CB78",
+              "value": 32
+            },
+            {
+              "cell": "CC78",
+              "value": 40
+            },
+            {
+              "cell": "CD78",
+              "value": 51
+            },
+            {
+              "cell": "CE78",
+              "value": 35
+            },
+            {
+              "cell": "CF78",
+              "value": 26
+            },
+            {
+              "cell": "CG78",
+              "value": 17
+            },
+            {
+              "cell": "CH78",
+              "value": 4
+            },
+            {
+              "cell": "CI78",
+              "value": 17
+            },
+            {
+              "cell": "CJ78",
+              "value": 24
+            },
+            {
+              "cell": "CK78",
+              "value": 10
+            },
+            {
+              "cell": "CL78",
+              "value": 14
+            },
+            {
+              "cell": "CM78",
+              "value": 12
+            },
+            {
+              "cell": "CN78",
+              "value": 13
+            },
+            {
+              "cell": "CO78",
+              "value": 17
+            },
+            {
+              "cell": "CP78",
+              "value": 7
+            },
+            {
+              "cell": "CQ78",
+              "value": 9
+            },
+            {
+              "cell": "CR78",
+              "value": 12
+            },
+            {
+              "cell": "CS78",
+              "value": 13
+            },
+            {
+              "cell": "CT78",
+              "value": 3
+            },
+            {
+              "cell": "CU78",
+              "value": 7
+            },
+            {
+              "cell": "CV78",
+              "value": 4
+            },
+            {
+              "cell": "CW78",
+              "value": 3
+            },
+            {
+              "cell": "CX78",
+              "value": 3
+            },
+            {
+              "cell": "CY78",
+              "value": 2
+            },
+            {
+              "cell": "CZ78",
+              "value": 2
+            }
+          ],
+          "value": 1034
+        }
+      ],
+      "original_id": "G030"
+    },
+    {
+      "id": "G012",
+      "category": "人口比例",
+      "question": "民國114年12月底，全國的女性全年齡人口占該地區不分性別全年齡總人口百分之多少？四捨五入至小數點後2位。",
+      "answer": "50.80%（11,836,731 ÷ 23,299,132 × 100）",
+      "expected": 50.8,
+      "unit": "%",
+      "operation": "percent",
+      "absolute_tolerance": 0.005,
+      "operands": [
+        {
+          "month": "2025-12",
+          "region": "總計",
+          "sex": "女",
+          "age_scope": "全年齡（原表總計欄）",
+          "sheet": "12",
+          "cells": [
+            {
+              "cell": "C6",
+              "value": 11836731
+            }
+          ],
+          "value": 11836731
+        },
+        {
+          "month": "2025-12",
+          "region": "總計",
+          "sex": "計",
+          "age_scope": "全年齡（原表總計欄）",
+          "sheet": "12",
+          "cells": [
+            {
+              "cell": "C4",
+              "value": 23299132
+            }
+          ],
+          "value": 23299132
+        }
+      ],
+      "original_id": "G031"
+    },
+    {
+      "id": "G013",
+      "category": "人口比例",
+      "question": "民國114年12月底，全國的0–14歲（含端點）人口占該地區不分性別全年齡總人口百分之多少？四捨五入至小數點後2位。",
+      "answer": "11.51%（2,681,890 ÷ 23,299,132 × 100）",
+      "expected": 11.51,
+      "unit": "%",
+      "operation": "percent",
+      "absolute_tolerance": 0.005,
+      "operands": [
+        {
+          "month": "2025-12",
+          "region": "總計",
+          "sex": "計",
+          "age_scope": "0–14歲（含端點）",
+          "sheet": "12",
+          "cells": [
+            {
+              "cell": "D4",
+              "value": 104349
+            },
+            {
+              "cell": "E4",
+              "value": 139194
+            },
+            {
+              "cell": "F4",
+              "value": 138064
+            },
+            {
+              "cell": "G4",
+              "value": 141500
+            },
+            {
+              "cell": "H4",
+              "value": 160905
+            },
+            {
+              "cell": "I4",
+              "value": 165108
+            },
+            {
+              "cell": "J4",
+              "value": 178834
+            },
+            {
+              "cell": "K4",
+              "value": 183526
+            },
+            {
+              "cell": "L4",
+              "value": 197364
+            },
+            {
+              "cell": "M4",
+              "value": 209965
+            },
+            {
+              "cell": "N4",
+              "value": 215587
+            },
+            {
+              "cell": "O4",
+              "value": 213770
+            },
+            {
+              "cell": "P4",
+              "value": 197072
+            },
+            {
+              "cell": "Q4",
+              "value": 236605
+            },
+            {
+              "cell": "R4",
+              "value": 200047
+            }
+          ],
+          "value": 2681890
+        },
+        {
+          "month": "2025-12",
+          "region": "總計",
+          "sex": "計",
+          "age_scope": "全年齡（原表總計欄）",
+          "sheet": "12",
+          "cells": [
+            {
+              "cell": "C4",
+              "value": 23299132
+            }
+          ],
+          "value": 23299132
+        }
+      ],
+      "original_id": "G033"
+    },
+    {
+      "id": "G014",
+      "category": "人口比例",
+      "question": "民國114年11月底，全國的65歲以上（含100+）人口占該地區不分性別全年齡總人口百分之多少？四捨五入至小數點後2位。",
+      "answer": "19.99%（4,657,796 ÷ 23,306,085 × 100）",
+      "expected": 19.99,
+      "unit": "%",
+      "operation": "percent",
+      "absolute_tolerance": 0.005,
+      "operands": [
+        {
+          "month": "2025-11",
+          "region": "總計",
+          "sex": "計",
+          "age_scope": "65歲以上（含100+）",
+          "sheet": "11",
+          "cells": [
+            {
+              "cell": "CE5",
+              "value": 338174
+            },
+            {
+              "cell": "CF5",
+              "value": 334312
+            },
+            {
+              "cell": "CG5",
+              "value": 317176
+            },
+            {
+              "cell": "CH5",
+              "value": 300521
+            },
+            {
+              "cell": "CI5",
+              "value": 308304
+            },
+            {
+              "cell": "CK5",
+              "value": 299184
+            },
+            {
+              "cell": "CL5",
+              "value": 275805
+            },
+            {
+              "cell": "CM5",
+              "value": 262026
+            },
+            {
+              "cell": "CN5",
+              "value": 253688
+            },
+            {
+              "cell": "CO5",
+              "value": 249321
+            },
+            {
+              "cell": "CQ5",
+              "value": 203480
+            },
+            {
+              "cell": "CR5",
+              "value": 187177
+            },
+            {
+              "cell": "CS5",
+              "value": 158273
+            },
+            {
+              "cell": "CT5",
+              "value": 133435
+            },
+            {
+              "cell": "CU5",
+              "value": 105860
+            },
+            {
+              "cell": "CW5",
+              "value": 90644
+            },
+            {
+              "cell": "CX5",
+              "value": 102999
+            },
+            {
+              "cell": "CY5",
+              "value": 98292
+            },
+            {
+              "cell": "CZ5",
+              "value": 91430
+            },
+            {
+              "cell": "DA5",
+              "value": 85779
+            },
+            {
+              "cell": "DC5",
+              "value": 79065
+            },
+            {
+              "cell": "DD5",
+              "value": 68153
+            },
+            {
+              "cell": "DE5",
+              "value": 57803
+            },
+            {
+              "cell": "DF5",
+              "value": 50179
+            },
+            {
+              "cell": "DG5",
+              "value": 42058
+            },
+            {
+              "cell": "DI5",
+              "value": 36108
+            },
+            {
+              "cell": "DJ5",
+              "value": 29118
+            },
+            {
+              "cell": "DK5",
+              "value": 23632
+            },
+            {
+              "cell": "DL5",
+              "value": 19299
+            },
+            {
+              "cell": "DM5",
+              "value": 15671
+            },
+            {
+              "cell": "DO5",
+              "value": 12235
+            },
+            {
+              "cell": "DP5",
+              "value": 8870
+            },
+            {
+              "cell": "DQ5",
+              "value": 6454
+            },
+            {
+              "cell": "DR5",
+              "value": 4652
+            },
+            {
+              "cell": "DS5",
+              "value": 3165
+            },
+            {
+              "cell": "DT5",
+              "value": 5454
+            }
+          ],
+          "value": 4657796
+        },
+        {
+          "month": "2025-11",
+          "region": "總計",
+          "sex": "計",
+          "age_scope": "全年齡（原表總計欄）",
+          "sheet": "11",
+          "cells": [
+            {
+              "cell": "C5",
+              "value": 23306085
+            }
+          ],
+          "value": 23306085
+        }
+      ],
+      "original_id": "G035"
+    },
+    {
+      "id": "G015",
+      "category": "縣市排名",
+      "question": "民國114年12月底，22個縣市中（排除全國、臺灣省及福建省彙總列），不分性別全年齡（原表總計欄）人口最多的是哪些縣市、各有多少人？並列者全部列出。",
+      "answer": "新北市：4,044,831 人",
+      "expected": [
+        {
+          "region": "新北市",
+          "population": 4044831
+        }
+      ],
+      "unit": "人",
+      "operation": "maximum",
+      "absolute_tolerance": 0,
+      "operands": [
+        {
+          "month": "2025-12",
+          "region": "南投縣",
+          "sex": "計",
+          "age_scope": "全年齡（原表總計欄）",
+          "sheet": "12",
+          "cells": [
+            {
+              "cell": "C40",
+              "value": 467881
+            }
+          ],
+          "value": 467881
+        },
+        {
+          "month": "2025-12",
+          "region": "嘉義市",
+          "sex": "計",
+          "age_scope": "全年齡（原表總計欄）",
+          "sheet": "12",
+          "cells": [
+            {
+              "cell": "C67",
+              "value": 261592
+            }
+          ],
+          "value": 261592
+        },
+        {
+          "month": "2025-12",
+          "region": "嘉義縣",
+          "sex": "計",
+          "age_scope": "全年齡（原表總計欄）",
+          "sheet": "12",
+          "cells": [
+            {
+              "cell": "C46",
+              "value": 473181
+            }
+          ],
+          "value": 473181
+        },
+        {
+          "month": "2025-12",
+          "region": "基隆市",
+          "sex": "計",
+          "age_scope": "全年齡（原表總計欄）",
+          "sheet": "12",
+          "cells": [
+            {
+              "cell": "C61",
+              "value": 359836
+            }
+          ],
+          "value": 359836
+        },
+        {
+          "month": "2025-12",
+          "region": "宜蘭縣",
+          "sex": "計",
+          "age_scope": "全年齡（原表總計欄）",
+          "sheet": "12",
+          "cells": [
+            {
+              "cell": "C28",
+              "value": 449336
+            }
+          ],
+          "value": 449336
+        },
+        {
+          "month": "2025-12",
+          "region": "屏東縣",
+          "sex": "計",
+          "age_scope": "全年齡（原表總計欄）",
+          "sheet": "12",
+          "cells": [
+            {
+              "cell": "C49",
+              "value": 782256
+            }
+          ],
+          "value": 782256
+        },
+        {
+          "month": "2025-12",
+          "region": "彰化縣",
+          "sex": "計",
+          "age_scope": "全年齡（原表總計欄）",
+          "sheet": "12",
+          "cells": [
+            {
+              "cell": "C37",
+              "value": 1210206
+            }
+          ],
+          "value": 1210206
+        },
+        {
+          "month": "2025-12",
+          "region": "新北市",
+          "sex": "計",
+          "age_scope": "全年齡（原表總計欄）",
+          "sheet": "12",
+          "cells": [
+            {
+              "cell": "C7",
+              "value": 4044831
+            }
+          ],
+          "value": 4044831
+        },
+        {
+          "month": "2025-12",
+          "region": "新竹市",
+          "sex": "計",
+          "age_scope": "全年齡（原表總計欄）",
+          "sheet": "12",
+          "cells": [
+            {
+              "cell": "C64",
+              "value": 455740
+            }
+          ],
+          "value": 455740
+        },
+        {
+          "month": "2025-12",
+          "region": "新竹縣",
+          "sex": "計",
+          "age_scope": "全年齡（原表總計欄）",
+          "sheet": "12",
+          "cells": [
+            {
+              "cell": "C31",
+              "value": 597235
+            }
+          ],
+          "value": 597235
+        },
+        {
+          "month": "2025-12",
+          "region": "桃園市",
+          "sex": "計",
+          "age_scope": "全年齡（原表總計欄）",
+          "sheet": "12",
+          "cells": [
+            {
+              "cell": "C13",
+              "value": 2355106
+            }
+          ],
+          "value": 2355106
+        },
+        {
+          "month": "2025-12",
+          "region": "澎湖縣",
+          "sex": "計",
+          "age_scope": "全年齡（原表總計欄）",
+          "sheet": "12",
+          "cells": [
+            {
+              "cell": "C58",
+              "value": 106716
+            }
+          ],
+          "value": 106716
+        },
+        {
+          "month": "2025-12",
+          "region": "臺中市",
+          "sex": "計",
+          "age_scope": "全年齡（原表總計欄）",
+          "sheet": "12",
+          "cells": [
+            {
+              "cell": "C16",
+              "value": 2868465
+            }
+          ],
+          "value": 2868465
+        },
+        {
+          "month": "2025-12",
+          "region": "臺北市",
+          "sex": "計",
+          "age_scope": "全年齡（原表總計欄）",
+          "sheet": "12",
+          "cells": [
+            {
+              "cell": "C10",
+              "value": 2439507
+            }
+          ],
+          "value": 2439507
+        },
+        {
+          "month": "2025-12",
+          "region": "臺南市",
+          "sex": "計",
+          "age_scope": "全年齡（原表總計欄）",
+          "sheet": "12",
+          "cells": [
+            {
+              "cell": "C19",
+              "value": 1852477
+            }
+          ],
+          "value": 1852477
+        },
+        {
+          "month": "2025-12",
+          "region": "臺東縣",
+          "sex": "計",
+          "age_scope": "全年齡（原表總計欄）",
+          "sheet": "12",
+          "cells": [
+            {
+              "cell": "C52",
+              "value": 208320
+            }
+          ],
+          "value": 208320
+        },
+        {
+          "month": "2025-12",
+          "region": "花蓮縣",
+          "sex": "計",
+          "age_scope": "全年齡（原表總計欄）",
+          "sheet": "12",
+          "cells": [
+            {
+              "cell": "C55",
+              "value": 312807
+            }
+          ],
+          "value": 312807
+        },
+        {
+          "month": "2025-12",
+          "region": "苗栗縣",
+          "sex": "計",
+          "age_scope": "全年齡（原表總計欄）",
+          "sheet": "12",
+          "cells": [
+            {
+              "cell": "C34",
+              "value": 531172
+            }
+          ],
+          "value": 531172
+        },
+        {
+          "month": "2025-12",
+          "region": "連江縣",
+          "sex": "計",
+          "age_scope": "全年齡（原表總計欄）",
+          "sheet": "12",
+          "cells": [
+            {
+              "cell": "C76",
+              "value": 13621
+            }
+          ],
+          "value": 13621
+        },
+        {
+          "month": "2025-12",
+          "region": "金門縣",
+          "sex": "計",
+          "age_scope": "全年齡（原表總計欄）",
+          "sheet": "12",
+          "cells": [
+            {
+              "cell": "C73",
+              "value": 139313
+            }
+          ],
+          "value": 139313
+        },
+        {
+          "month": "2025-12",
+          "region": "雲林縣",
+          "sex": "計",
+          "age_scope": "全年齡（原表總計欄）",
+          "sheet": "12",
+          "cells": [
+            {
+              "cell": "C43",
+              "value": 650989
+            }
+          ],
+          "value": 650989
+        },
+        {
+          "month": "2025-12",
+          "region": "高雄市",
+          "sex": "計",
+          "age_scope": "全年齡（原表總計欄）",
+          "sheet": "12",
+          "cells": [
+            {
+              "cell": "C22",
+              "value": 2718545
+            }
+          ],
+          "value": 2718545
+        }
+      ],
+      "original_id": "G039"
+    },
+    {
+      "id": "G016",
+      "category": "縣市排名",
+      "question": "民國114年12月底，22個縣市中（排除全國、臺灣省及福建省彙總列），不分性別全年齡（原表總計欄）人口最少的是哪些縣市、各有多少人？並列者全部列出。",
+      "answer": "連江縣：13,621 人",
+      "expected": [
+        {
+          "region": "連江縣",
+          "population": 13621
+        }
+      ],
+      "unit": "人",
+      "operation": "minimum",
+      "absolute_tolerance": 0,
+      "operands": [
+        {
+          "month": "2025-12",
+          "region": "南投縣",
+          "sex": "計",
+          "age_scope": "全年齡（原表總計欄）",
+          "sheet": "12",
+          "cells": [
+            {
+              "cell": "C40",
+              "value": 467881
+            }
+          ],
+          "value": 467881
+        },
+        {
+          "month": "2025-12",
+          "region": "嘉義市",
+          "sex": "計",
+          "age_scope": "全年齡（原表總計欄）",
+          "sheet": "12",
+          "cells": [
+            {
+              "cell": "C67",
+              "value": 261592
+            }
+          ],
+          "value": 261592
+        },
+        {
+          "month": "2025-12",
+          "region": "嘉義縣",
+          "sex": "計",
+          "age_scope": "全年齡（原表總計欄）",
+          "sheet": "12",
+          "cells": [
+            {
+              "cell": "C46",
+              "value": 473181
+            }
+          ],
+          "value": 473181
+        },
+        {
+          "month": "2025-12",
+          "region": "基隆市",
+          "sex": "計",
+          "age_scope": "全年齡（原表總計欄）",
+          "sheet": "12",
+          "cells": [
+            {
+              "cell": "C61",
+              "value": 359836
+            }
+          ],
+          "value": 359836
+        },
+        {
+          "month": "2025-12",
+          "region": "宜蘭縣",
+          "sex": "計",
+          "age_scope": "全年齡（原表總計欄）",
+          "sheet": "12",
+          "cells": [
+            {
+              "cell": "C28",
+              "value": 449336
+            }
+          ],
+          "value": 449336
+        },
+        {
+          "month": "2025-12",
+          "region": "屏東縣",
+          "sex": "計",
+          "age_scope": "全年齡（原表總計欄）",
+          "sheet": "12",
+          "cells": [
+            {
+              "cell": "C49",
+              "value": 782256
+            }
+          ],
+          "value": 782256
+        },
+        {
+          "month": "2025-12",
+          "region": "彰化縣",
+          "sex": "計",
+          "age_scope": "全年齡（原表總計欄）",
+          "sheet": "12",
+          "cells": [
+            {
+              "cell": "C37",
+              "value": 1210206
+            }
+          ],
+          "value": 1210206
+        },
+        {
+          "month": "2025-12",
+          "region": "新北市",
+          "sex": "計",
+          "age_scope": "全年齡（原表總計欄）",
+          "sheet": "12",
+          "cells": [
+            {
+              "cell": "C7",
+              "value": 4044831
+            }
+          ],
+          "value": 4044831
+        },
+        {
+          "month": "2025-12",
+          "region": "新竹市",
+          "sex": "計",
+          "age_scope": "全年齡（原表總計欄）",
+          "sheet": "12",
+          "cells": [
+            {
+              "cell": "C64",
+              "value": 455740
+            }
+          ],
+          "value": 455740
+        },
+        {
+          "month": "2025-12",
+          "region": "新竹縣",
+          "sex": "計",
+          "age_scope": "全年齡（原表總計欄）",
+          "sheet": "12",
+          "cells": [
+            {
+              "cell": "C31",
+              "value": 597235
+            }
+          ],
+          "value": 597235
+        },
+        {
+          "month": "2025-12",
+          "region": "桃園市",
+          "sex": "計",
+          "age_scope": "全年齡（原表總計欄）",
+          "sheet": "12",
+          "cells": [
+            {
+              "cell": "C13",
+              "value": 2355106
+            }
+          ],
+          "value": 2355106
+        },
+        {
+          "month": "2025-12",
+          "region": "澎湖縣",
+          "sex": "計",
+          "age_scope": "全年齡（原表總計欄）",
+          "sheet": "12",
+          "cells": [
+            {
+              "cell": "C58",
+              "value": 106716
+            }
+          ],
+          "value": 106716
+        },
+        {
+          "month": "2025-12",
+          "region": "臺中市",
+          "sex": "計",
+          "age_scope": "全年齡（原表總計欄）",
+          "sheet": "12",
+          "cells": [
+            {
+              "cell": "C16",
+              "value": 2868465
+            }
+          ],
+          "value": 2868465
+        },
+        {
+          "month": "2025-12",
+          "region": "臺北市",
+          "sex": "計",
+          "age_scope": "全年齡（原表總計欄）",
+          "sheet": "12",
+          "cells": [
+            {
+              "cell": "C10",
+              "value": 2439507
+            }
+          ],
+          "value": 2439507
+        },
+        {
+          "month": "2025-12",
+          "region": "臺南市",
+          "sex": "計",
+          "age_scope": "全年齡（原表總計欄）",
+          "sheet": "12",
+          "cells": [
+            {
+              "cell": "C19",
+              "value": 1852477
+            }
+          ],
+          "value": 1852477
+        },
+        {
+          "month": "2025-12",
+          "region": "臺東縣",
+          "sex": "計",
+          "age_scope": "全年齡（原表總計欄）",
+          "sheet": "12",
+          "cells": [
+            {
+              "cell": "C52",
+              "value": 208320
+            }
+          ],
+          "value": 208320
+        },
+        {
+          "month": "2025-12",
+          "region": "花蓮縣",
+          "sex": "計",
+          "age_scope": "全年齡（原表總計欄）",
+          "sheet": "12",
+          "cells": [
+            {
+              "cell": "C55",
+              "value": 312807
+            }
+          ],
+          "value": 312807
+        },
+        {
+          "month": "2025-12",
+          "region": "苗栗縣",
+          "sex": "計",
+          "age_scope": "全年齡（原表總計欄）",
+          "sheet": "12",
+          "cells": [
+            {
+              "cell": "C34",
+              "value": 531172
+            }
+          ],
+          "value": 531172
+        },
+        {
+          "month": "2025-12",
+          "region": "連江縣",
+          "sex": "計",
+          "age_scope": "全年齡（原表總計欄）",
+          "sheet": "12",
+          "cells": [
+            {
+              "cell": "C76",
+              "value": 13621
+            }
+          ],
+          "value": 13621
+        },
+        {
+          "month": "2025-12",
+          "region": "金門縣",
+          "sex": "計",
+          "age_scope": "全年齡（原表總計欄）",
+          "sheet": "12",
+          "cells": [
+            {
+              "cell": "C73",
+              "value": 139313
+            }
+          ],
+          "value": 139313
+        },
+        {
+          "month": "2025-12",
+          "region": "雲林縣",
+          "sex": "計",
+          "age_scope": "全年齡（原表總計欄）",
+          "sheet": "12",
+          "cells": [
+            {
+              "cell": "C43",
+              "value": 650989
+            }
+          ],
+          "value": 650989
+        },
+        {
+          "month": "2025-12",
+          "region": "高雄市",
+          "sex": "計",
+          "age_scope": "全年齡（原表總計欄）",
+          "sheet": "12",
+          "cells": [
+            {
+              "cell": "C22",
+              "value": 2718545
+            }
+          ],
+          "value": 2718545
+        }
+      ],
+      "original_id": "G040"
+    },
+    {
+      "id": "G017",
+      "category": "縣市排名",
+      "question": "民國114年11月底，22個縣市中（排除全國、臺灣省及福建省彙總列），不分性別100歲以上（含100+）人口最少的是哪些縣市、各有多少人？並列者全部列出。",
+      "answer": "連江縣：9 人",
+      "expected": [
+        {
+          "region": "連江縣",
+          "population": 9
+        }
+      ],
+      "unit": "人",
+      "operation": "minimum",
+      "absolute_tolerance": 0,
+      "operands": [
+        {
+          "month": "2025-11",
+          "region": "南投縣",
+          "sex": "計",
+          "age_scope": "100歲以上（含100+）",
+          "sheet": "11",
+          "cells": [
+            {
+              "cell": "DT41",
+              "value": 119
+            }
+          ],
+          "value": 119
+        },
+        {
+          "month": "2025-11",
+          "region": "嘉義市",
+          "sex": "計",
+          "age_scope": "100歲以上（含100+）",
+          "sheet": "11",
+          "cells": [
+            {
+              "cell": "DT68",
+              "value": 48
+            }
+          ],
+          "value": 48
+        },
+        {
+          "month": "2025-11",
+          "region": "嘉義縣",
+          "sex": "計",
+          "age_scope": "100歲以上（含100+）",
+          "sheet": "11",
+          "cells": [
+            {
+              "cell": "DT47",
+              "value": 115
+            }
+          ],
+          "value": 115
+        },
+        {
+          "month": "2025-11",
+          "region": "基隆市",
+          "sex": "計",
+          "age_scope": "100歲以上（含100+）",
+          "sheet": "11",
+          "cells": [
+            {
+              "cell": "DT62",
+              "value": 128
+            }
+          ],
+          "value": 128
+        },
+        {
+          "month": "2025-11",
+          "region": "宜蘭縣",
+          "sex": "計",
+          "age_scope": "100歲以上（含100+）",
+          "sheet": "11",
+          "cells": [
+            {
+              "cell": "DT29",
+              "value": 102
+            }
+          ],
+          "value": 102
+        },
+        {
+          "month": "2025-11",
+          "region": "屏東縣",
+          "sex": "計",
+          "age_scope": "100歲以上（含100+）",
+          "sheet": "11",
+          "cells": [
+            {
+              "cell": "DT50",
+              "value": 125
+            }
+          ],
+          "value": 125
+        },
+        {
+          "month": "2025-11",
+          "region": "彰化縣",
+          "sex": "計",
+          "age_scope": "100歲以上（含100+）",
+          "sheet": "11",
+          "cells": [
+            {
+              "cell": "DT38",
+              "value": 253
+            }
+          ],
+          "value": 253
+        },
+        {
+          "month": "2025-11",
+          "region": "新北市",
+          "sex": "計",
+          "age_scope": "100歲以上（含100+）",
+          "sheet": "11",
+          "cells": [
+            {
+              "cell": "DT8",
+              "value": 1004
+            }
+          ],
+          "value": 1004
+        },
+        {
+          "month": "2025-11",
+          "region": "新竹市",
+          "sex": "計",
+          "age_scope": "100歲以上（含100+）",
+          "sheet": "11",
+          "cells": [
+            {
+              "cell": "DT65",
+              "value": 137
+            }
+          ],
+          "value": 137
+        },
+        {
+          "month": "2025-11",
+          "region": "新竹縣",
+          "sex": "計",
+          "age_scope": "100歲以上（含100+）",
+          "sheet": "11",
+          "cells": [
+            {
+              "cell": "DT32",
+              "value": 110
+            }
+          ],
+          "value": 110
+        },
+        {
+          "month": "2025-11",
+          "region": "桃園市",
+          "sex": "計",
+          "age_scope": "100歲以上（含100+）",
+          "sheet": "11",
+          "cells": [
+            {
+              "cell": "DT14",
+              "value": 459
+            }
+          ],
+          "value": 459
+        },
+        {
+          "month": "2025-11",
+          "region": "澎湖縣",
+          "sex": "計",
+          "age_scope": "100歲以上（含100+）",
+          "sheet": "11",
+          "cells": [
+            {
+              "cell": "DT59",
+              "value": 23
+            }
+          ],
+          "value": 23
+        },
+        {
+          "month": "2025-11",
+          "region": "臺中市",
+          "sex": "計",
+          "age_scope": "100歲以上（含100+）",
+          "sheet": "11",
+          "cells": [
+            {
+              "cell": "DT17",
+              "value": 468
+            }
+          ],
+          "value": 468
+        },
+        {
+          "month": "2025-11",
+          "region": "臺北市",
+          "sex": "計",
+          "age_scope": "100歲以上（含100+）",
+          "sheet": "11",
+          "cells": [
+            {
+              "cell": "DT11",
+              "value": 1147
+            }
+          ],
+          "value": 1147
+        },
+        {
+          "month": "2025-11",
+          "region": "臺南市",
+          "sex": "計",
+          "age_scope": "100歲以上（含100+）",
+          "sheet": "11",
+          "cells": [
+            {
+              "cell": "DT20",
+              "value": 331
+            }
+          ],
+          "value": 331
+        },
+        {
+          "month": "2025-11",
+          "region": "臺東縣",
+          "sex": "計",
+          "age_scope": "100歲以上（含100+）",
+          "sheet": "11",
+          "cells": [
+            {
+              "cell": "DT53",
+              "value": 66
+            }
+          ],
+          "value": 66
+        },
+        {
+          "month": "2025-11",
+          "region": "花蓮縣",
+          "sex": "計",
+          "age_scope": "100歲以上（含100+）",
+          "sheet": "11",
+          "cells": [
+            {
+              "cell": "DT56",
+              "value": 84
+            }
+          ],
+          "value": 84
+        },
+        {
+          "month": "2025-11",
+          "region": "苗栗縣",
+          "sex": "計",
+          "age_scope": "100歲以上（含100+）",
+          "sheet": "11",
+          "cells": [
+            {
+              "cell": "DT35",
+              "value": 112
+            }
+          ],
+          "value": 112
+        },
+        {
+          "month": "2025-11",
+          "region": "連江縣",
+          "sex": "計",
+          "age_scope": "100歲以上（含100+）",
+          "sheet": "11",
+          "cells": [
+            {
+              "cell": "DT77",
+              "value": 9
+            }
+          ],
+          "value": 9
+        },
+        {
+          "month": "2025-11",
+          "region": "金門縣",
+          "sex": "計",
+          "age_scope": "100歲以上（含100+）",
+          "sheet": "11",
+          "cells": [
+            {
+              "cell": "DT74",
+              "value": 49
+            }
+          ],
+          "value": 49
+        },
+        {
+          "month": "2025-11",
+          "region": "雲林縣",
+          "sex": "計",
+          "age_scope": "100歲以上（含100+）",
+          "sheet": "11",
+          "cells": [
+            {
+              "cell": "DT44",
+              "value": 137
+            }
+          ],
+          "value": 137
+        },
+        {
+          "month": "2025-11",
+          "region": "高雄市",
+          "sex": "計",
+          "age_scope": "100歲以上（含100+）",
+          "sheet": "11",
+          "cells": [
+            {
+              "cell": "DT23",
+              "value": 428
+            }
+          ],
+          "value": 428
+        }
+      ],
+      "original_id": "G044"
+    },
+    {
+      "id": "G018",
+      "category": "跨月增減",
+      "question": "民國114年12月底相較1月底，全國不分性別全年齡（原表總計欄）人口增減多少人？以後月減前月，保留正負號。",
+      "answer": "-96,917 人（後月減前月）",
+      "expected": -96917,
+      "unit": "人",
+      "operation": "difference",
+      "absolute_tolerance": 0,
+      "operands": [
+        {
+          "month": "2025-01",
+          "region": "總計",
+          "sex": "計",
+          "age_scope": "全年齡（原表總計欄）",
+          "sheet": "01",
+          "cells": [
+            {
+              "cell": "C5",
+              "value": 23396049
+            }
+          ],
+          "value": 23396049
+        },
+        {
+          "month": "2025-12",
+          "region": "總計",
+          "sex": "計",
+          "age_scope": "全年齡（原表總計欄）",
+          "sheet": "12",
+          "cells": [
+            {
+              "cell": "C4",
+              "value": 23299132
+            }
+          ],
+          "value": 23299132
+        }
+      ],
+      "original_id": "G045"
+    },
+    {
+      "id": "G019",
+      "category": "跨月增減",
+      "question": "民國114年12月底相較1月底，桃園市不分性別全年齡（原表總計欄）人口增減多少人？以後月減前月，保留正負號。",
+      "answer": "+15,382 人（後月減前月）",
+      "expected": 15382,
+      "unit": "人",
+      "operation": "difference",
+      "absolute_tolerance": 0,
+      "operands": [
+        {
+          "month": "2025-01",
+          "region": "桃園市",
+          "sex": "計",
+          "age_scope": "全年齡（原表總計欄）",
+          "sheet": "01",
+          "cells": [
+            {
+              "cell": "C14",
+              "value": 2339724
+            }
+          ],
+          "value": 2339724
+        },
+        {
+          "month": "2025-12",
+          "region": "桃園市",
+          "sex": "計",
+          "age_scope": "全年齡（原表總計欄）",
+          "sheet": "12",
+          "cells": [
+            {
+              "cell": "C13",
+              "value": 2355106
+            }
+          ],
+          "value": 2355106
+        }
+      ],
+      "original_id": "G047"
+    },
+    {
+      "id": "G020",
+      "category": "跨月增減",
+      "question": "民國114年11月底相較1月底，全國不分性別65歲以上（含100+）人口增減多少人？以後月減前月，保留正負號。",
+      "answer": "+149,377 人（後月減前月）",
+      "expected": 149377,
+      "unit": "人",
+      "operation": "difference",
+      "absolute_tolerance": 0,
+      "operands": [
+        {
+          "month": "2025-01",
+          "region": "總計",
+          "sex": "計",
+          "age_scope": "65歲以上（含100+）",
+          "sheet": "01",
+          "cells": [
+            {
+              "cell": "CE5",
+              "value": 334045
+            },
+            {
+              "cell": "CF5",
+              "value": 326037
+            },
+            {
+              "cell": "CG5",
+              "value": 307233
+            },
+            {
+              "cell": "CH5",
+              "value": 310600
+            },
+            {
+              "cell": "CI5",
+              "value": 302413
+            },
+            {
+              "cell": "CK5",
+              "value": 284581
+            },
+            {
+              "cell": "CL5",
+              "value": 266877
+            },
+            {
+              "cell": "CM5",
+              "value": 259107
+            },
+            {
+              "cell": "CN5",
+              "value": 257592
+            },
+            {
+              "cell": "CO5",
+              "value": 214891
+            },
+            {
+              "cell": "CQ5",
+              "value": 195984
+            },
+            {
+              "cell": "CR5",
+              "value": 166692
+            },
+            {
+              "cell": "CS5",
+              "value": 144836
+            },
+            {
+              "cell": "CT5",
+              "value": 112217
+            },
+            {
+              "cell": "CU5",
+              "value": 93110
+            },
+            {
+              "cell": "CW5",
+              "value": 106451
+            },
+            {
+              "cell": "CX5",
+              "value": 104045
+            },
+            {
+              "cell": "CY5",
+              "value": 96828
+            },
+            {
+              "cell": "CZ5",
+              "value": 92177
+            },
+            {
+              "cell": "DA5",
+              "value": 85673
+            },
+            {
+              "cell": "DC5",
+              "value": 75467
+            },
+            {
+              "cell": "DD5",
+              "value": 64448
+            },
+            {
+              "cell": "DE5",
+              "value": 56724
+            },
+            {
+              "cell": "DF5",
+              "value": 47811
+            },
+            {
+              "cell": "DG5",
+              "value": 41497
+            },
+            {
+              "cell": "DI5",
+              "value": 34707
+            },
+            {
+              "cell": "DJ5",
+              "value": 28344
+            },
+            {
+              "cell": "DK5",
+              "value": 23329
+            },
+            {
+              "cell": "DL5",
+              "value": 19671
+            },
+            {
+              "cell": "DM5",
+              "value": 15681
+            },
+            {
+              "cell": "DO5",
+              "value": 11852
+            },
+            {
+              "cell": "DP5",
+              "value": 8620
+            },
+            {
+              "cell": "DQ5",
+              "value": 6251
+            },
+            {
+              "cell": "DR5",
+              "value": 4511
+            },
+            {
+              "cell": "DS5",
+              "value": 2940
+            },
+            {
+              "cell": "DT5",
+              "value": 5177
+            }
+          ],
+          "value": 4508419
+        },
+        {
+          "month": "2025-11",
+          "region": "總計",
+          "sex": "計",
+          "age_scope": "65歲以上（含100+）",
+          "sheet": "11",
+          "cells": [
+            {
+              "cell": "CE5",
+              "value": 338174
+            },
+            {
+              "cell": "CF5",
+              "value": 334312
+            },
+            {
+              "cell": "CG5",
+              "value": 317176
+            },
+            {
+              "cell": "CH5",
+              "value": 300521
+            },
+            {
+              "cell": "CI5",
+              "value": 308304
+            },
+            {
+              "cell": "CK5",
+              "value": 299184
+            },
+            {
+              "cell": "CL5",
+              "value": 275805
+            },
+            {
+              "cell": "CM5",
+              "value": 262026
+            },
+            {
+              "cell": "CN5",
+              "value": 253688
+            },
+            {
+              "cell": "CO5",
+              "value": 249321
+            },
+            {
+              "cell": "CQ5",
+              "value": 203480
+            },
+            {
+              "cell": "CR5",
+              "value": 187177
+            },
+            {
+              "cell": "CS5",
+              "value": 158273
+            },
+            {
+              "cell": "CT5",
+              "value": 133435
+            },
+            {
+              "cell": "CU5",
+              "value": 105860
+            },
+            {
+              "cell": "CW5",
+              "value": 90644
+            },
+            {
+              "cell": "CX5",
+              "value": 102999
+            },
+            {
+              "cell": "CY5",
+              "value": 98292
+            },
+            {
+              "cell": "CZ5",
+              "value": 91430
+            },
+            {
+              "cell": "DA5",
+              "value": 85779
+            },
+            {
+              "cell": "DC5",
+              "value": 79065
+            },
+            {
+              "cell": "DD5",
+              "value": 68153
+            },
+            {
+              "cell": "DE5",
+              "value": 57803
+            },
+            {
+              "cell": "DF5",
+              "value": 50179
+            },
+            {
+              "cell": "DG5",
+              "value": 42058
+            },
+            {
+              "cell": "DI5",
+              "value": 36108
+            },
+            {
+              "cell": "DJ5",
+              "value": 29118
+            },
+            {
+              "cell": "DK5",
+              "value": 23632
+            },
+            {
+              "cell": "DL5",
+              "value": 19299
+            },
+            {
+              "cell": "DM5",
+              "value": 15671
+            },
+            {
+              "cell": "DO5",
+              "value": 12235
+            },
+            {
+              "cell": "DP5",
+              "value": 8870
+            },
+            {
+              "cell": "DQ5",
+              "value": 6454
+            },
+            {
+              "cell": "DR5",
+              "value": 4652
+            },
+            {
+              "cell": "DS5",
+              "value": 3165
+            },
+            {
+              "cell": "DT5",
+              "value": 5454
+            }
+          ],
+          "value": 4657796
+        }
+      ],
+      "original_id": "G050"
+    }
+  ]
+}
