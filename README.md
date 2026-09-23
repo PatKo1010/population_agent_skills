@@ -19,6 +19,22 @@ taiwan-population-pipeline
 
 [AGENTS.md](AGENTS.md) 是專案層級的流程指示：分析必須走 pipeline，不能改用直接讀取 Excel、自行計算或臨時 SQL 回答。這是 agent 的行為規範，目前沒有程式層級的 pipeline runner 或工具存取封鎖。
 
+
+## Demo 問答
+
+以下五題選自現有 [問答輸出](outputs/golden_set_114/answers.json)，答案已與 [20 題 Golden Set](outputs/golden_set_114/golden_set_20.json) 核對一致。這是既有結果的展示，不代表本次文件更新重新執行了完整管線。民國 114 年為西元 2025 年，人口數均指指定月份的月底人口。
+
+| 題號 | 問題 | 答案 |
+| --- | --- | --- |
+| G001 | 民國114年1月底，全國不分性別、全年齡人口共有多少人？ | 23,396,049 人 |
+| G004 | 民國114年1月底，臺北市男性的全年齡人口是多少人？ | 1,173,374 人 |
+| G008 | 民國114年1月底，全國不分性別的0歲人口是多少人？ | 130,123 人 |
+| G009 | 民國114年11月底，全國不分性別65歲以上（含100歲以上）人口是多少人？ | 4,657,796 人 |
+| G012 | 民國114年12月底，全國女性全年齡人口占全國不分性別全年齡總人口百分之多少？四捨五入至小數點後2位。 | 50.80% |
+
+0 歲人口是月底的居民人口存量，不能當作當年出生人數；女性占比的分母為男女合計的全年齡人口。
+
+
 ## 安裝專案需要的相關環境
 
 以下終端指令以 macOS、Linux 或 Windows WSL 的 Bash 為例，請在專案根目錄執行。
@@ -29,8 +45,6 @@ taiwan-population-pipeline
 - **Python 3 與 venv / pip**：執行資料處理腳本。專案目前沒有宣告最低 Python 版本；本地開發環境使用 Python 3.14。
 - **Hermes Agent 與可用的模型設定**：使用 skills 時需要；單獨執行 Python 腳本與測試不需要模型金鑰。
 - **來源 `.xls`**：自行準備符合此專案格式的工作簿，執行時提供絕對路徑。現有輸出檔不能取代 pipeline 所需的原始來源。
-
-尚未安裝 Hermes 時，依照 [Hermes 官方安裝說明](https://hermes-agent.nousresearch.com/docs/getting-started/installation) 安裝，並依 [Quickstart](https://hermes-agent.nousresearch.com/docs/getting-started/quickstart) 完成模型供應商設定。模型憑證由 Hermes 管理，不要放入專案檔案。
 
 確認目前終端可以找到工具：
 
@@ -103,20 +117,6 @@ output/
 /taiwan-population-xls-profiler 僅檢查 /absolute/path/data.xls 的結構與異常，不進行人口分析。
 ```
 
-## Demo 問答
-
-以下五題選自現有 [問答輸出](outputs/golden_set_114/answers.json)，答案已與 [20 題 Golden Set](outputs/golden_set_114/golden_set_20.json) 核對一致。這是既有結果的展示，不代表本次文件更新重新執行了完整管線。民國 114 年為西元 2025 年，人口數均指指定月份的月底人口。
-
-| 題號 | 問題 | 答案 |
-| --- | --- | --- |
-| G001 | 民國114年1月底，全國不分性別、全年齡人口共有多少人？ | 23,396,049 人 |
-| G004 | 民國114年1月底，臺北市男性的全年齡人口是多少人？ | 1,173,374 人 |
-| G008 | 民國114年1月底，全國不分性別的0歲人口是多少人？ | 130,123 人 |
-| G009 | 民國114年11月底，全國不分性別65歲以上（含100歲以上）人口是多少人？ | 4,657,796 人 |
-| G012 | 民國114年12月底，全國女性全年齡人口占全國不分性別全年齡總人口百分之多少？四捨五入至小數點後2位。 | 50.80% |
-
-0 歲人口是月底的居民人口存量，不能當作當年出生人數；女性占比的分母為男女合計的全年齡人口。
-
 ## 支援範圍與目前限制
 
 - 支援人口數查詢、排名、年齡人口占比及指定月份的時間序列；精確欄位見 [intent schema](.hermes/skills/taiwan-population-analyst/references/intent-schema.md)。
@@ -126,32 +126,13 @@ output/
 - 目前讀取 `.xls`，不支援直接輸入 `.xlsx`。
 - 出生事件、遷徙人數、所得、職業與人口變化原因不在此資料集範圍；完整界線見 [query policy](.hermes/skills/taiwan-population-analyst/references/query-policy.md)。
 
-## 驗證環境與執行測試
-
-啟用虛擬環境後執行：
-
-```bash
-python -m unittest discover -s tests -v
-```
-
-測試涵蓋 manifest 與 query intent 行為，使用測試資料，不代表實際來源 XLS 已通過驗證。實際分析仍須經過完整 pipeline。
-
-| 問題 | 處理方式 |
-| --- | --- |
-| `No module named xlrd` | 使用執行腳本的同一個 Python 執行 `python -m pip install -r .hermes/skills/requirements.txt`，並確認 agent 使用該環境。 |
-| 找不到 skills | 確認從專案根目錄啟動 Hermes、已執行 `hermes skills trust`，再重新啟動。 |
-| validator 回傳 `failed` | 查看 `validation.json` 的 `errors` 與 `checks`，修正資料或解析問題後重跑；不要跳過驗證。 |
-| 查詢回傳非 `ok` | 依回傳 code 補齊條件或確認資料覆蓋範圍；`results: null` 不等於人口為零。 |
-
-更多測試提問見 [TEST_QUESTIONS.md](.hermes/skills/TEST_QUESTIONS.md)。
-
 ## Pipeline 設計的優點
 
 - **分階段定位問題**：profiler、normalizer、validator 與 analyst 各自負責檔案結構、資料轉換、品質檢查與查詢，能區分解析錯誤、資料異常及 intent 錯誤，減少排查範圍。
 - **在回答前檢查資料品質**：流程要求確認月份、年齡覆蓋、性別與人口合計，再進行查詢，降低缺漏資料或重複加總造成錯誤答案的機會。驗證通過表示符合已實作的檢查，並不保證所有來源語意都正確。
 - **讓模型與計算分工**：模型負責理解問題並產生受限 intent，人口計算由固定、參數化的 SQL 執行；同一份資料與相同 intent 可重現相同查詢結果。
 - **保留可追溯的產物**：profile、manifest、validation、intent 與 query result 分別記錄資料結構、覆蓋範圍、驗證狀態與查詢條件，方便人工稽核與 Golden Set 比對。
-- **明確處理不可回答的問題**：缺少條件、月份不存在、年齡精度不足或資料不包含出生／遷徙事件時，以結構化狀態回報，避免把缺資料當成零或任意替換條件。
+- **明確處理不可回答的問題**：缺少条件、月份不存在、年齡精度不足或資料不包含出生／遷徙事件時，以結構化狀態回報，避免把缺資料當成零或任意替換條件。
 
 目前階段順序與驗證關卡主要由 skill 和 `AGENTS.md` 規範 agent 執行；後續可增加程式化 runner，將產物關聯與通過條件落實為執行檢查。
 
@@ -168,4 +149,3 @@ python -m unittest discover -s tests -v
 | 支援固定的跨月差額操作 | 現有 `population_trend` 僅回傳快照，未提供正式的差額運算。 | 新增受限差額操作，要求起訖月份及一致的人口條件，由程式回傳前值、後值及帶正負號的差額，避免模型自行計算。 |
 | 統一百分比精度與捨入規則 | 查詢目前回傳小數點後4位百分比，題目可能要求2位；答案端再次捨入可能產生邊界誤差。 | 定義受限的精度參數與捨入規則，由查詢程式從原始分子、分母直接計算指定精度，並保留兩者供核對。 |
 
-後續驗證應同時涵蓋有效 intent、錯誤 intent、並列排名、零分母及捨入邊界，並以完整20題測試「自然語言 → intent → 查詢結果 → 最終答案」，避免只通過單元測試卻在答案組裝階段失敗。
